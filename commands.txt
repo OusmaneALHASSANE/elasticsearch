@@ -1,8 +1,24 @@
 
+===============================================================================
+get sample data:
+
 wget http://media.sundog-soft.com/es7/shakes-mapping.json
 wget http://media.sundog-soft.com/es7/shakespeare_7.0.json
 
+wget http://files.grouplens.org/datasets/movielens/ml-latest-small.zip
+unzip ml-latest-small.zip
+
+wget for windows:
+https://builtvisible.com/download-your-website-with-wget/
+https://eternallybored.org/misc/wget/
+
 ===============================================================================
+curl command:
+
+curl -H "Content-Type: application/json" -X<verb> <URL> -d '<body>'
+
+===============================================================================
+load sample data:
 
 curl -H "Content-Type: application/json" -XPUT localhost:9200/shakespeare --data-binary @shakes-mapping.json 
 curl -H "Content-Type: application/json" -XPOST localhost:9200/shakespeare/_bulk --data-binary @shakespeare_7.0.json
@@ -10,7 +26,46 @@ curl -H "Content-Type: application/json" -XPOST localhost:9200/shakespeare/_bulk
 curl -H "Content-Type: application/json" -XDELETE localhost:9200/shakespeare 
 
 ===============================================================================
+search with key words:
 
 curl -H "Content-Type: application/json" -XGET 'localhost:9200/shakespeare/_search?pretty' -d '{"query": {"match_phrase": {"text_entry": "to be or not to be"}}}'
+
+===============================================================================
+docker commands:
+
+ssh into a container:
+docker exec -it <container name> bash
+docker ps
+winpty docker exec -it 57ee70cf8be6 bash
+
+run a command in a image:
+docker run -it <image name> <command>
+winpty docker run -it elasticsearch:7.2.0 ls
+
+run a command in a container:
+docker-compose run <container name> <command>
+docker-compose run es01 ls
+
+===============================================================================
+
+# do this in postman instead!!!
+nano cl - "curl -H "Content-Type: application/json" "$@"
+chmod a+x cl
+. cl localhost:9200
+
+wget http://media.sundog-soft.com/es7/movies.json
+curl -H "Content-Type: application/json" -XPUT localhost:9200/_bulk?pretty --data-binary @movies.json 
+
+wget http://media.sundog-soft.com/es7/series.json
+# copy to Postman working directory
+cp series.json ~/Postman/files/
+
+===============================================================================
+
+
+
+
+
+
 
 
