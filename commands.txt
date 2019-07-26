@@ -61,7 +61,11 @@ wget http://media.sundog-soft.com/es7/series.json
 cp series.json ~/Postman/files/
 
 ===============================================================================
+# logstash
 
+wget media.sundog-soft.com/es/access_log
+
+===============================================================================
 
 
 
