@@ -1,5 +1,6 @@
+git status
 git pull
 git add .
-git commit -a -m 'update'
+git commit -a -m 'updates'
 git push
 
