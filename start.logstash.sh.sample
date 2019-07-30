@@ -1,0 +1,15 @@
+
+#docker run -d  --name logstash --publish 5000:5000 --env LS_ES_CONN_STR=localhost:9200 logstash:7.2.0
+
+#docker run -d -h logstash --name logstash --link elasticsearch:elasticsearch -it --rm -v "$PWD":/config-dir logstash -f /config-dir/logstash.conf
+
+#It’s possible to provide an entire directory containing all needed files:
+#docker run --rm -it -v ~/settings/:/usr/share/logstash/config/ logstash:7.2.0
+
+#Alternatively, a single file can be mounted:
+#docker run --rm -it -v ~/settings/logstash.yml:/usr/share/logstash/config/logstash.yml logstash:7.2.0
+
+#docker run -d --name logstash -it --rm -v /c/Users/james.wang/git/elasticsearch:/config-dir logstash:7.2.0 -f /config-dir/logstash.conf
+
+winpty docker run --rm -it -v /C:/Users/james.wang/git/elasticsearch/logstash.settings/:/usr/share/logstash/config/ docker.elastic.co/logstash/logstash:7.2.1 -f /usr/share/logstash/config/logstash.conf
+

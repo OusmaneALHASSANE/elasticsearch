@@ -46,6 +46,9 @@ run a command in a container:
 docker-compose run <container name> <command>
 docker-compose run es01 ls
 
+copy fils from container to host:
+docker cp d347d3715e28:/usr/share/logstash/config/ .
+
 ===============================================================================
 
 # do this in postman instead!!!
