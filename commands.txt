@@ -70,6 +70,51 @@ wget media.sundog-soft.com/es/access_log
 
 ===============================================================================
 
+wget http://files.grouplens.org/datasets/movielens/ml-100k.zip
+
+create database movielens;
+create table movielens.movies (movidID int primary key not null, title text, releaseDate date);
+drop table movielens.movies;
+load data local infile '/c:/Users/james.wang/git/elasticsearch/elm/ml-100k/u.item' into table movielens.movies fields terminated by '|' (movieID, title, @var3) set releaseDate = str_to_date(@var3, '%d-%M-%Y');
+select * from movielens.movies where title like 'star%';
+select * from movielens.movies;
+
+C:\Users\james.wang\eclipse-workspace\digicert_docker:
+docker-compose up -d digisql
+
+C:\Users\james.wang\git\elasticsearch\elm:
+docker-compose up -d elasticsearch
+docker-compose up logstash
+
+===============================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
