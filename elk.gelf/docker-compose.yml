@@ -2,7 +2,7 @@ version: "3"
 
 services: 
   elasticsearch:
-    image: docker.elastic.co/elasticsearch/elasticsearch:7.1.1
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.0
     ports:
       - 9200:9200
     environment: 
@@ -12,7 +12,7 @@ services:
       - logging-network
 
   logstash:
-    image: docker.elastic.co/logstash/logstash:7.1.1
+    image: docker.elastic.co/logstash/logstash:7.3.0
     depends_on: 
       - elasticsearch
     ports:
@@ -23,7 +23,7 @@ services:
       - logging-network
 
   kibana:
-    image: docker.elastic.co/kibana/kibana:7.1.1
+    image: docker.elastic.co/kibana/kibana:7.3.0
     depends_on:
       - logstash
     ports: 
