@@ -1,0 +1,46 @@
+version: "3"
+
+services: 
+  elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:7.3.0
+    ports:
+      - 9200:9200
+    environment: 
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+    networks: 
+      - elk
+
+  logstash:
+    image: docker.elastic.co/logstash/logstash:7.3.0
+    depends_on: 
+      - elasticsearch
+    volumes:
+      - ./logstash.conf:/usr/share/logstash/pipeline/logstash.conf:ro 
+    networks:
+      - elk
+
+  kibana:
+    image: docker.elastic.co/kibana/kibana:7.3.0
+    depends_on:
+      - logstash
+    ports: 
+      - 5601:5601
+    networks: 
+      - elk
+
+  filebeat:
+    image: docker.elastic.co/beats/filebeat:7.3.0
+    depends_on: 
+      - logstash
+      - kibana
+    command: filebeat -e -strict.perms=false
+    volumes:
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ./access_log:/usr/share/filebeat/logs/access_log:ro
+    networks:
+      - elk
+
+networks: 
+  elk:
+    driver: bridge
