@@ -1,4 +1,6 @@
 
+https://www.udemy.com/elasticsearch-7-and-elastic-stack/
+
 ===============================================================================
 get sample data:
 
@@ -11,6 +13,8 @@ unzip ml-latest-small.zip
 wget for windows:
 https://builtvisible.com/download-your-website-with-wget/
 https://eternallybored.org/misc/wget/
+
+https://www.csvjson.com/csv2json
 
 ===============================================================================
 curl command:
@@ -82,9 +86,23 @@ select * from movielens.movies;
 C:\Users\james.wang\eclipse-workspace\digicert_docker:
 docker-compose up -d digisql
 
-C:\Users\james.wang\git\elasticsearch\elm:
+https://www.elastic.co/blog/how-to-keep-elasticsearch-synchronized-with-a-relational-database-using-logstash
+C:\Users\james.wang\git\elasticsearch\el.mariadb:
 docker-compose up -d elasticsearch
 docker-compose up logstash
+
+https://qbox.io/blog/import-csv-elasticsearch-logstash-sincedb
+https://www.youtube.com/watch?v=rKy4sFbIZ3U
+https://www.dataneb.com/post/loading-csv-data-into-elasticsearch-with-logstash
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-mutate.html
+https://www.elastic.co/guide/en/logstash/current/plugins-filters-date.html
+C:\Users\james.wang\git\elasticsearch\el.csv:
+docker-compose up -d elasticsearch
+docker-compose up logstash
+
+===============================================================================
+
+
 
 ===============================================================================
 
