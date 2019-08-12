@@ -21,6 +21,7 @@ services:
       - esdata01:/usr/share/elasticsearch/data
     ports:
       - 9200:9200
+      - 9300:9300
     networks:
       - esnet
         
@@ -44,9 +45,10 @@ services:
       - esdata02:/usr/share/elasticsearch/data
     ports:
       - 9201:9200
+      - 9301:9300
     networks:
       - esnet
-      
+
 volumes:
   esdata01:
     driver: local
